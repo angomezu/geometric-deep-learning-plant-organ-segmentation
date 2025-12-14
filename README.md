@@ -57,6 +57,8 @@ High-throughput plant phenotyping is critical for bioenergy and agricultural res
 
 This project investigates whether **explicit geometric feature engineering combined with Dynamic Edge Convolutional Neural Networks (DECNNs)** can effectively address these challenges.
 
+![Annotated plant point cloud](assets/3D_scan.jpg)
+
 ---
 
 ## Scope and Limitations
@@ -91,6 +93,9 @@ The protocol emphasizes:
 
 A total of **30 point clouds** were fully annotated to support supervised learning.
 
+
+![Annotated plant point cloud](assets/segmentation_3_leafs.png)
+![Annotated plant point cloud](assets/segmentation2.png)
 ---
 
 ### Feature Engineering
@@ -178,7 +183,8 @@ Under the described experimental setup, the model achieved:
 - Meaningful reconstruction of primary plant structure in qualitative analysis  
 
 Observed limitations include stem–stake ambiguity and resolution-induced boundary artifacts, which are discussed in detail in the accompanying report.
-
+![Annotated plant point cloud](assets/DECNN_Prediction.png)
+![Annotated plant point cloud](assets/debug_plant_2.png)
 ---
 
 ## Future Research Directions
