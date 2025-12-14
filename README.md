@@ -1,5 +1,7 @@
 # Plant Organ Segmentation for Phenotyping via Geometric Deep Learning on 3D Point Clouds
 
+Last Update: December 14, 2025
+
 ### Authors
 
 **Angel A. Barrera-Gomez**  
@@ -43,17 +45,15 @@ R&D Associate Staff Member
 Biosciences Division  
 Oak Ridge National Laboratory  
 
-**Dr. Larry M. York**
-Senior Staff Scientist
-Biosciences Division
-Oak Ridge National Laboratory
+**Dr. Larry M. York**  
+Senior Staff Scientist  
+Biosciences Division  
+Oak Ridge National Laboratory  
 
-**Anand, Seethepalli**
-Biosciences Computer Vision Developer
-Biosciences Division
-Oak Ridge National Laboratory
-
-December 5, 2025
+**Anand, Seethepalli**  
+Biosciences Computer Vision Developer  
+Biosciences Division  
+Oak Ridge National Laboratory  
 
 ---
 
