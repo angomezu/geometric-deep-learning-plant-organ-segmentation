@@ -153,7 +153,10 @@ Qualitative evaluation was performed via 3D visualizations of predicted segmenta
 
 ## Repository Structure
 
-The project is organized to strictly separate **raw data ingestion**, **model logic**, and **execution drivers**, ensuring reproducible and corruption-free training cycles.
+The project is organized to clearly separate **data ingestion**, **model logic**, and **execution drivers**, enabling reproducible and corruption-free experimentation. Rather than relying on exploratory notebook-based workflows, the codebase is structured as a modular pipeline that reflects how geometric deep learning systems are developed, validated, and evaluated in practice.
+
+To comply with confidentiality and intellectual property requirements associated with Oak Ridge National Laboratory (ORNL), this repository does not include raw or processed data, model checkpoints, prediction outputs, or intermediate artifacts. The directory structure is preserved to document the full experimental workflow, while all shared code focuses on methodology, architecture, and evaluation logic.
+
 
 ```text
 ├── data/
