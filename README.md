@@ -2,7 +2,7 @@
 
 ### Authors
 
-**Angel A. Barrera**  
+**Angel A. Barrera-Gomez**  
 M.S. Applied Data Science  
 B.E. Computer Systems Engineering  
 Department of Mathematics & Statistics  
