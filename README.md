@@ -57,7 +57,11 @@ High-throughput plant phenotyping is critical for bioenergy and agricultural res
 
 This project investigates whether **explicit geometric feature engineering combined with Dynamic Edge Convolutional Neural Networks (DECNNs)** can effectively address these challenges.
 
-![Annotated plant point cloud](assets/3D_scan.jpg)
+<p align="center">
+  <img src="assets/3D_scan.jpg" alt="3D LiDAR scan of plant in controlled phenotyping environment" width="450"><br>
+  <em>Figure 1: Example 3D LiDAR scan of a young plant acquired in a controlled phenotyping environment. The resulting point cloud captures fine-grained geometric structure but lacks spectral information, motivating the need for geometry-aware learning methods.</em>
+</p>
+
 
 ---
 
@@ -94,8 +98,15 @@ The protocol emphasizes:
 A total of **30 point clouds** were fully annotated to support supervised learning.
 
 
-![Annotated plant point cloud](assets/segmentation_3_leafs.png)
-![Annotated plant point cloud](assets/segmentation2.png)
+<p align="center">
+  <img src="assets/segmentation_3_leafs.png" alt="Annotated plant point cloud example 1" width="380">
+  <img src="assets/segmentation2.png" alt="Annotated plant point cloud example 2" width="380">
+</p>
+
+<p align="center">
+  <em>Figure 2: Examples of manually annotated 3D plant point clouds used for supervised training. Points are labeled into stem, leaf, support stake, and background classes following a rule-based annotation protocol.</em>
+</p>
+
 ---
 
 ### Feature Engineering
@@ -178,23 +189,35 @@ The project is organized to strictly separate **raw data ingestion**, **model lo
 
 Under the described experimental setup, the model achieved:
 
-- Strong segmentation performance on the dominant Leaf class  
-- High recall for the critical Stem class despite severe class imbalance  
-- Meaningful reconstruction of primary plant structure in qualitative analysis  
+- Strong segmentation performance on the dominant Leaf class.  
+- High recall for the critical Stem class despite severe class imbalance.  
+- Meaningful reconstruction of primary plant structure in qualitative analysis.  
 
 Observed limitations include stem–stake ambiguity and resolution-induced boundary artifacts, which are discussed in detail in the accompanying report.
-![Annotated plant point cloud](assets/DECNN_Prediction.png)
-![Annotated plant point cloud](assets/debug_plant_2.png)
+
+<p align="center">
+  <img src="assets/debug_plant_2.png" alt="DECNN prediction before fine-tuning showing noise" width="320">
+  <img src="assets/DECNN_Prediction.png" alt="DECNN prediction after fine-tuning" width="380">
+</p>
+
+<p align="center">
+  <em>
+    Figure 3: Qualitative comparison of DECNN segmentation results. 
+    <strong>Left:</strong> Early-stage model output prior to fine-tuning, illustrating high-frequency noise and fragmented predictions.
+    <strong>Right:</strong> Final model prediction after feature engineering and hyperparameter tuning, showing coherent reconstruction of plant organs.
+  </em>
+</p>
+
 ---
 
 ## Future Research Directions
 
 Potential extensions of this work include:
 
-- Incorporation of RGB or multispectral data to reduce geometric ambiguity  
-- Higher-resolution training enabled by improved hardware resources  
-- Expanded datasets across growth stages and environmental conditions  
-- Comparative studies with alternative point cloud architectures  
+- Incorporation of RGB or multispectral data to reduce geometric ambiguity.  
+- Higher-resolution training enabled by improved hardware resources.  
+- Expanded datasets across growth stages and environmental conditions.  
+- Comparative studies with alternative point cloud architectures.  
 
 ---
 
