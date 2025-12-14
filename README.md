@@ -122,3 +122,41 @@ Qualitative evaluation was performed via 3D visualizations of predicted segmenta
 ├── count_nans.py     # NaN and numerical stability audits
 │
 └── README.md
+
+The codebase is intentionally modular, separating model logic, data handling, and execution scripts to promote reproducibility and safe experimentation.
+
+```
+---
+
+## Results (Illustrative)
+
+Under the described experimental setup, the model achieved:
+
+- Strong segmentation performance on the dominant Leaf class  
+- High recall for the critical Stem class despite severe class imbalance  
+- Meaningful reconstruction of primary plant structure in qualitative analysis  
+
+Observed limitations include stem–stake ambiguity and resolution-induced boundary artifacts, which are discussed in detail in the accompanying report.
+
+---
+
+## Future Research Directions
+
+Potential extensions of this work include:
+
+- Incorporation of RGB or multispectral data to reduce geometric ambiguity  
+- Higher-resolution training enabled by improved hardware resources  
+- Expanded datasets across growth stages and environmental conditions  
+- Comparative studies with alternative point cloud architectures  
+
+---
+
+## Acknowledgments
+
+This research used resources of the **Advanced Plant Phenotyping Laboratory** and the **Center for Bioenergy Innovation (CBI)**, which is a U.S. Department of Energy Bioenergy Research Center supported by the Office of Biological and Environmental Research in the DOE Office of Science. Oak Ridge National Laboratory is managed by **UT-Battelle, LLC** for the U.S. Department of Energy under Contract Number **DE-AC05-00OR22725**.
+
+---
+
+## Disclaimer
+
+The views and conclusions contained in this repository are those of the authors and do not necessarily represent the views of Oak Ridge National Laboratory or the U.S. Department of Energy. The code is provided for academic and research purposes only.
