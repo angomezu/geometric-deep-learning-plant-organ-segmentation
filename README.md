@@ -13,7 +13,8 @@ M.S. Applied Data Science
 Department of Mathematics & Statistics  
 East Tennessee State University  
 
-**Luke Hussung**  
+**Luke Hussung**
+M.S. Applied Data Science  
 Department of Mathematics & Statistics  
 East Tennessee State University  
 
