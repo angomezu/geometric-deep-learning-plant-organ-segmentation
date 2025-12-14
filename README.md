@@ -219,10 +219,12 @@ Observed limitations include stem–stake ambiguity and resolution-induced bound
 
 Potential extensions of this work include:
 
-- Incorporation of RGB or multispectral data to reduce geometric ambiguity.  
-- Higher-resolution training enabled by improved hardware resources.  
-- Expanded datasets across growth stages and environmental conditions.  
-- Comparative studies with alternative point cloud architectures.  
+- Incorporation of RGB or multispectral data to reduce geometric ambiguity and improve organ-level discrimination.  
+- Higher-resolution training enabled by improved hardware resources, allowing finer-scale geometric feature extraction.  
+- Expansion of the dataset across multiple growth stages and environmental conditions to study temporal generalization.  
+- Comparative evaluation of alternative point cloud architectures (e.g., PointNet++, KPConv, transformer-based models).  
+- Integration of MLOps practices to support reproducible experimentation and scalable deployment, including containerization of the training and inference pipelines using Docker and orchestration via Kubernetes or similar workflow managers. Such extensions would enable automated model versioning, experiment tracking, and controlled deployment of trained models for large-scale phenotyping studies.
+
 
 ---
 
