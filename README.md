@@ -1,14 +1,31 @@
 # Plant Phenotyping via Geometric Supervised Deep Learning on 3D Point Clouds
 
-**Angel A. Barrera**  
-Department of Mathematics & Statistics  
+**Angel A. Barrera**
+M.S. Applied Data Science
+B.E. Computer Systems Engineering
+Department of Mathematics & Statistics
 East Tennessee State University  
 
-**Inhwan Jung**  
+**Inhwan Jung**
+M.S. Applied Data Science
+Department of Mathematics & Statistics
 East Tennessee State University  
 
 **Luke Hussung**  
+Department of Mathematics & Statistics
+East Tennessee State University
+
+**Academic Advisors**
+
+Dr. Jeff R. Knisley
+Department of Mathematics & Statistics  
 East Tennessee State University  
+
+Dr. Michele Joyner
+East Tennessee State University  
+
+Dr. Robert M. Price  
+East Tennessee State University
 
 In collaboration with **Oak Ridge National Laboratory (ORNL)**  
 December 2025  
