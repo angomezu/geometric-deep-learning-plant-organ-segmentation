@@ -1,4 +1,4 @@
-# 3D Plant Organ Segmentation via Geometric Deep Learning on Point Clouds
+# Plant Phenotyping via Geometric Supervised Deep Learning on 3D Point Clouds
 
 **Angel A. Barrera**  
 Department of Mathematics & Statistics  
