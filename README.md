@@ -34,7 +34,24 @@ East Tennessee State University
 Department of Mathematics & Statistics  
 East Tennessee State University  
 
-In collaboration with **Oak Ridge National Laboratory (ORNL)**.  
+---
+
+### External Research Collaborators (Oak Ridge National Laboratory)
+
+**Dr. John Lagergren**  
+R&D Associate Staff Member  
+Biosciences Division  
+Oak Ridge National Laboratory  
+
+**Dr. Larry M. York**
+Senior Staff Scientist
+Biosciences Division
+Oak Ridge National Laboratory
+
+**Anand, Seethepalli**
+Biosciences Computer Vision Developer
+Biosciences Division
+Oak Ridge National Laboratory
 
 December 5, 2025
 
