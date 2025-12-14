@@ -1,4 +1,4 @@
-# Plant Phenotyping via Geometric Supervised Deep Learning on 3D Point Clouds
+# Plant Organ Segmentation for Phenotyping via Geometric Deep Learning on 3D Point Clouds
 
 ### Authors
 
