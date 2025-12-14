@@ -1,6 +1,6 @@
 # Plant Organ Segmentation for Phenotyping via Geometric Deep Learning on 3D Point Clouds
 
-Last Update: December 14, 2025
+_Last updated: December 14, 2025_
 
 ### Authors
 
