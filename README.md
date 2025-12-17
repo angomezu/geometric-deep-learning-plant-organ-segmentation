@@ -8,12 +8,12 @@
 **[Inhwan Jung](https://www.linkedin.com/in/INHWAN_LINKEDIN/)**,  
 **[Luke Hussung](https://www.linkedin.com/in/luke-hussung-4a2671252/)**  
 
-Applied Data Science Program  
-Department of Mathematics & Statistics  
-East Tennessee State University  
+**[Applied Data Science Program](https://www.etsu.edu/cas/math/masters-in-applied-data-science.php)**  
+**[Department of Mathematics & Statistics](https://www.etsu.edu/cas/math/)**  
+**[East Tennessee State University](https://www.etsu.edu/ehome/)**  
 
 **External Research Collaboration**  
-Oak Ridge National Laboratory (ORNL)
+**[Oak Ridge National Laboratory (ORNL)](https://www.ornl.gov/)**  
 
 </div>
 
@@ -338,8 +338,7 @@ If you find this work useful in your research, please consider citing:
 
 This research used resources of the Advanced Plant Phenotyping Laboratory and the Center for Bioenergy Innovation (CBI), which is a U.S. Department of Energy Bioenergy Research Center supported by the Office of Biological and Environmental Research in the DOE Office of Science. Oak Ridge National Laboratory is managed by UT-Battelle, LLC for the U.S. Department of Energy under Contract Number DE-AC05-00OR22725.
 
-We thank **Dr. John Lagergren**, **Dr. Larry M. York**, and **Anand Seethepalli** (Oak Ridge National Laboratory, Biosciences Division) for providing access to experimental data, domain expertise, and valuable feedback throughout the project.
-
+We sincerely thank **Dr. John Lagergren**, **Dr. Larry M. York**, and **Anand Seethepalli** (Oak Ridge National Laboratory, Biosciences Division) for providing access to experimental data, domain expertise, and valuable feedback throughout the project. We also thank **Dr. Jeff R. Knisley**, **Dr. Robert M. Price**, and **Dr. Michele Joyner** (Department of Mathematics & Statistics, East Tennessee State University) for their academic guidance and mentorship, and for making this collaboration possible by enabling meaningful real-world research and development experience in data science.
 
 ---
 ### Disclaimer
