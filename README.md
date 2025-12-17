@@ -1,5 +1,7 @@
 # Plant Organ Segmentation from 3D LiDAR Point Clouds via Geometric Deep Learning
 
+_Last updated: December 17, 2025_
+
 <div align="center">
 
 ### Authors
@@ -52,6 +54,7 @@
 - [Disclaimer](#disclaimer)
 
 ---
+
 ## Abstract
 
 Semantic segmentation of unstructured 3D point clouds remains a challenging problem, particularly in domains where appearance cues are unavailable. In plant phenotyping, LiDAR-based point clouds provide rich geometric information but suffer from class imbalance, occlusion, and geometric ambiguity between biological and abiotic structures.
@@ -188,7 +191,7 @@ Qualitative evaluation is performed via 3D visualization of predicted segmentati
 
 ---
 
-## Results (Illustrative)
+## Qualitative Findings
 
 Under the described experimental setup:
 
