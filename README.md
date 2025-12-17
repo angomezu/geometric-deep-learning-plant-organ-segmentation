@@ -1,5 +1,9 @@
 # Plant Organ Segmentation from 3D LiDAR Point Clouds via Geometric Deep Learning
 
+![CI](https://github.com/angomezu/geometric-deep-learning-plant-organ-segmentation/actions/workflows/ci.yml/badge.svg)
+![Python](https://img.shields.io/badge/python-3.8%2B-blue)
+![License](https://img.shields.io/badge/license-academic-lightgrey)
+
 _Last updated: December 17, 2025_
 
 <div align="center">
@@ -246,6 +250,24 @@ All directories related to raw data, predictions, and model checkpoints are **in
 ---
 
 ## Reproducibility & Installation
+
+### Continuous Integration and Code Quality
+
+This repository enforces consistent coding standards and documentation to support long-term reproducibility and collaborative research.
+
+All Python code is automatically checked using:
+
+- **Ruff** for PEP8 and PEP257 compliance
+- **Pre-commit hooks** to prevent non-compliant code from being committed locally
+- **GitHub Actions CI** to validate code quality on every push and pull request
+
+The CI pipeline runs the following checks:
+
+```bash
+ruff check .
+ruff format --check .
+```
+Pull requests to the main branch are blocked unless all checks pass, ensuring that the repository remains clean, readable, and reproducible over time.
 
 ### Data Availability
 
