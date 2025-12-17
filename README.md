@@ -32,7 +32,7 @@ This work investigates the use of **geometry-aware deep learning** for organ-lev
 
 ---
 
-## Highlights
+## Contributions
 
 - Geometry-only semantic segmentation of plant organs from LiDAR point clouds
 - Manual annotation protocol designed for biological structures
