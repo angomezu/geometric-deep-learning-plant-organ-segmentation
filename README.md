@@ -54,6 +54,8 @@ _Last updated: December 17, 2025_
 - [Notes on Usage](#notes-on-usage)
 - [Future Research Directions](#future-research-directions)
 - [Citation](#citation)
+- [External Research Collaborators](#external-research-collaborators) 
+- [Academic Advisors](#academic-advisors)
 - [Acknowledgments](#acknowledgments)
 - [Disclaimer](#disclaimer)
 
