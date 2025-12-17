@@ -1,14 +1,16 @@
-import torch
-import numpy as np
-from torch_geometric.loader import DataLoader
-from src.model import OakRidgeSegmenter
-from src.dataset import OakRidgeDataset
-from tqdm import tqdm
+"""Compute segmentation metrics and bootstrap confidence intervals."""
+
 import os
-import sys
 
-# this script calculates evaluation metrics for the ORNL segmentation we trained
+import numpy as np
+import torch
+from torch_geometric.loader import DataLoader
+from tqdm import tqdm
 
+from src.dataset import OakRidgeDataset
+from src.model import OakRidgeSegmenter
+
+# Calculates evaluation metrics for the trained ORNL segmentation model.
 # configurations
 # change this path as needed to point to your model and data
 MODEL_PATH = "models/model_run4_nuclear(solid).pth"
@@ -19,17 +21,24 @@ NUM_CLASSES = 3
 IN_CHANNELS = 7
 
 # Class Map
-CLASS_NAMES = {0: 'Stem', 1: 'Leaf', 2: 'Stake'}
+CLASS_NAMES = {0: "Stem", 1: "Leaf", 2: "Stake"}
 
 
 def compute_confidence_interval(scores, num_bootstraps=1000, confidence_level=0.95):
-    """
-    Calculates the 95% Confidence Interval using Bootstrapping.
-    scores: List or numpy array of IoU scores (one per sample).
+    """Compute a bootstrap confidence interval for a metric.
+
+    Args:
+        scores: 1D array-like of metric values (one per sample).
+        num_bootstraps: Number of bootstrap iterations.
+        confidence_level: Confidence level (e.g., 0.95).
+
+    Returns:
+        Tuple (low, high) confidence interval bounds.
     """
     scores = np.array(scores)
     if len(scores) < 2:
-        return np.mean(scores), 0, 0
+        mean = float(np.mean(scores)) if len(scores) else 0.0
+        return mean, mean, mean
 
     bootstrapped_means = []
     rng = np.random.default_rng(seed=42)
@@ -47,7 +56,8 @@ def compute_confidence_interval(scores, num_bootstraps=1000, confidence_level=0.
 
 
 def calculate_metrics():
-    device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+    """Evaluate a model and print per-class IoU/precision/recall summaries."""
+    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     print(f"Evaluating metrics on {device}")
 
     # 1. Load Data
@@ -65,14 +75,14 @@ def calculate_metrics():
         print(f"Error: Model file not found at {MODEL_PATH}")
         return
 
-    model = OakRidgeSegmenter(in_channels=IN_CHANNELS,
-                              out_channels=NUM_CLASSES).to(device)
+    model = OakRidgeSegmenter(in_channels=IN_CHANNELS, out_channels=NUM_CLASSES).to(
+        device
+    )
     model.load_state_dict(torch.load(MODEL_PATH, map_location=device))
     model.eval()
 
     # Global Confusion Matrix (for overall scores)
-    global_cm = torch.zeros(NUM_CLASSES, NUM_CLASSES,
-                            dtype=torch.long, device=device)
+    global_cm = torch.zeros(NUM_CLASSES, NUM_CLASSES, dtype=torch.long, device=device)
     # Per-Sample IoUs (for bootstrapping)
     sample_mean_ious = []
 
@@ -108,8 +118,11 @@ def calculate_metrics():
                 sample_mean_ious.append(np.mean(sample_ious))
 
     # Compute & Print Metrics
-    print("\n" + "="*85)
-    print(f"{'Class':<12} | {'IoU (%)':<10} | {'Recall (%)':<12} | {'Precision (%)':<14} | {'Support'}")
+    print("\n" + "=" * 85)
+    print(
+        f"{'Class':<12} | {'IoU (%)':<10} | {'Recall (%)':<12} | "
+        f"{'Precision (%)':<14} | {'Support'}"
+    )
     print("-" * 85)
 
     cm = global_cm.cpu().numpy()
@@ -131,7 +144,9 @@ def calculate_metrics():
         count = np.sum(cm[i, :])
 
         print(
-            f"{name:<12} | {iou*100:<10.2f} | {recall*100:<12.2f} | {precision*100:<14.2f} | {count}")
+            f"{name:<12} | {iou * 100:<10.2f} | {recall * 100:<12.2f} | "
+            f"{precision * 100:<14.2f} | {count}"
+        )
 
     print("-" * 85)
 
@@ -151,7 +166,7 @@ def calculate_metrics():
     else:
         print("\nNot enough samples for bootstrap analysis.")
 
-    print("="*85)
+    print("=" * 85)
 
 
 if __name__ == "__main__":

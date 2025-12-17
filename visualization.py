@@ -1,29 +1,33 @@
-import torch
-import open3d as o3d
+"""Visualize point-cloud segmentation predictions."""
+
 import numpy as np
+import open3d as o3d
+import torch
+
 from src.dataset import OakRidgeDataset
 from src.model import OakRidgeSegmenter
 
 # CONFIGURATION
 NUM_CLASSES = 4
 # Change this path as needed
-CHECKPOINT = r'C:\Oak Ridge\Model\models\model_run4_nuclear.pth'
+CHECKPOINT = r"C:\Oak Ridge\Model\models\model_run4_nuclear.pth"
 
 
 def visualize_prediction():
-    device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+    """Load a checkpoint and visualize predicted labels as colored points."""
+    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     print(f"Loading model from {CHECKPOINT}...")
 
     # First load Model (previous checkpoint)
-    model = OakRidgeSegmenter(
-        in_channels=4, out_channels=NUM_CLASSES).to(device)
-    model.load_state_dict(torch.load(
-        CHECKPOINT, map_location=device, weights_only=True))
+    model = OakRidgeSegmenter(in_channels=4, out_channels=NUM_CLASSES).to(device)
+    model.load_state_dict(
+        torch.load(CHECKPOINT, map_location=device, weights_only=True)
+    )
     model.eval()
 
     # Loading the Validation Data
     # We want to see how it performs on data it hasn't trained on heavily
-    dataset = OakRidgeDataset(root='data', split='val')
+    dataset = OakRidgeDataset(root="data", split="val")
     print(f"Found {len(dataset)} validation samples.")
 
     # Pick the first one (or change index to see others)
@@ -40,14 +44,16 @@ def visualize_prediction():
     points = data.pos.cpu().numpy()
     labels = data.y.cpu().numpy()
 
-    # Define Colors: 0=Stem(Grey), 1=Leaf(Brown), 2=Stake(Green), 3=Back(Red) you can change this.
-    # (Based on our previous visual check)
-    color_map = np.array([
-        [0.6, 0.6, 0.6],  # 0: Stem (Grey)
-        [0.6, 0.4, 0.2],  # 1: Leaf (Brown)
-        [0.0, 1.0, 0.0],  # 2: Stake (Green)
-        [1.0, 0.0, 0.0]  # 3: Background (Red)
-    ])
+    # Define colors: 0=Stem, 1=Leaf, 2=Stake, 3=Background.
+    # Update this mapping if your class indices differ.
+    color_map = np.array(
+        [
+            [0.6, 0.6, 0.6],  # 0: Stem (Grey)
+            [0.6, 0.4, 0.2],  # 1: Leaf (Brown)
+            [0.0, 1.0, 0.0],  # 2: Stake (Green)
+            [1.0, 0.0, 0.0],  # 3: Background (Red)
+        ]
+    )
 
     # Left: Ground Truth (What it actually is)
     pcd_true = o3d.geometry.PointCloud()

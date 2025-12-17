@@ -1,6 +1,7 @@
-import os
-import numpy as np
 import glob
+import os
+
+import numpy as np
 
 # Path to your raw data
 DATA_DIR = r"C:\Oak Ridge\Model\data\raw"
@@ -13,8 +14,8 @@ def scan_labels():
         print("ERROR: No label files found!")
         return
 
-    global_min = float('inf')
-    global_max = float('-inf')
+    global_min = float("inf")
+    global_max = float("-inf")
     has_nans = False
 
     for f_path in label_files:
@@ -48,14 +49,16 @@ def scan_labels():
 
             if min_val < 0 or max_val >= 4:
                 print(
-                    f"[FAIL] {filename}: Found rogue labels {unique_vals} (Expected 0-3)")
+                    f"[FAIL] {filename}: Found rogue labels {unique_vals} "
+                    "(Expected 0-3)"
+                )
             else:
                 print(f"[OK]   {filename}: {unique_vals}")
 
         except Exception as e:
             print(f"[ERR]  {filename}: Read error - {e}")
 
-    print("\n" + "="*30)
+    print("\n" + "=" * 30)
     print(f"Global Range Found: [{global_min}, {global_max}]")
     if has_nans:
         print("CRITICAL: NaNs found.")

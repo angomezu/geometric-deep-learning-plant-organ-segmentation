@@ -1,0 +1,23 @@
+[tool.ruff] #for formatting, linting, and code quality
+line-length = 88 #modern Python standard
+target-version = "py39"
+exclude = ["other scripts"]
+
+# E, F: PEP8-style errors
+# I: import sorting
+# D: docstring checks (PEP257)
+[tool.ruff.lint]
+extend-select = ["E", "F", "I", "D"]
+ignore = ["D203", "D213"] #prevents docstring conflicts
+
+[tool.ruff.lint.pydocstyle]
+# Docstring convention: google-style docstrings for readability
+convention = "google"
+
+[tool.black] #formats code to enhance readability
+line-length = 88
+target-version = ["py39"]
+
+[tool.ruff.lint.per-file-ignores]
+"validations/*.py" = ["D"]
+"other scripts/*.py" = ["D"]

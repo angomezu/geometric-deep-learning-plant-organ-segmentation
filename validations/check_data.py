@@ -1,7 +1,7 @@
-import os
-import open3d as o3d
-import numpy as np
 import glob
+import os
+
+import open3d as o3d
 
 # Path to your raw data
 DATA_DIR = r"C:\Oak Ridge\Model\data\raw"
@@ -34,7 +34,7 @@ def scan_files():
             print(f"[ERR]  {filename}: Read error - {e}")
             bad_files.append(filename)
 
-    print("\n" + "="*30)
+    print("\n" + "=" * 30)
     if len(bad_files) == 0:
         print("All files look healthy.")
     elif len(bad_files) == len(pcd_files):

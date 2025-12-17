@@ -1,6 +1,7 @@
-import os
-import numpy as np
 import glob
+import os
+
+import numpy as np
 
 DATA_DIR = r"C:\Oak Ridge\Model\data\raw"
 
@@ -36,7 +37,7 @@ def count_nans():
         except Exception as e:
             print(f"[ERR]  Could not read {filename}: {e}")
 
-    print("\n" + "="*30)
+    print("\n" + "=" * 30)
     print(f"Total NaNs found across all files: {total_nans_all_files}")
 
     if total_nans_all_files > 0:
