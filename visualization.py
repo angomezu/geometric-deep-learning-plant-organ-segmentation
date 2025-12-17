@@ -14,8 +14,6 @@ NUM_CLASSES = 4
 # then update this path to the checkpoint you want to visualize.
 CHECKPOINT = "models/model_run4_nuclear.pth"
 
-CHECKPOINT = r"C:\Oak Ridge\Model\models\model_run4_nuclear.pth"
-
 
 def visualize_prediction():
     """Load a checkpoint and visualize predicted labels as colored points."""
