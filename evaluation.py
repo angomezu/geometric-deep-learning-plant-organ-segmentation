@@ -154,15 +154,15 @@ def calculate_metrics():
     mean_iou = np.mean(global_ious)
     overall_acc = np.trace(cm) / np.sum(cm) if np.sum(cm) > 0 else 0
 
-    print(f"Global Mean IoU:   {mean_iou*100:.2f}%")
-    print(f"Overall Accuracy:  {overall_acc*100:.2f}%")
+    print(f"Global Mean IoU:   {mean_iou * 100:.2f}%")
+    print(f"Overall Accuracy:  {overall_acc * 100:.2f}%")
 
     # Running the Bootstrap
     if len(sample_mean_ious) > 1:
         mean_boot, lower, upper = compute_confidence_interval(sample_mean_ious)
         print("Statistical Significance")
-        print(f"Sample-Averaged mIoU: {mean_boot*100:.2f}%")
-        print(f"Confidence Interval:  [{lower*100:.2f}% - {upper*100:.2f}%]")
+        print(f"Sample-Averaged mIoU: {mean_boot * 100:.2f}%")
+        print(f"Confidence Interval:  [{lower * 100:.2f}% - {upper * 100:.2f}%]")
     else:
         print("\nNot enough samples for bootstrap analysis.")
 

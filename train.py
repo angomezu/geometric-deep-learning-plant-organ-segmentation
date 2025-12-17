@@ -89,7 +89,7 @@ def train():
         model.train()
         train_loss_accum = 0
 
-        for batch in tqdm(train_loader, desc=f"Epoch {epoch+1}/{EPOCHS}"):
+        for batch in tqdm(train_loader, desc=f"Epoch {epoch + 1}/{EPOCHS}"):
             batch = batch.to(device)
             optimizer.zero_grad()
 
@@ -117,8 +117,10 @@ def train():
                 val_loss += (l_ce + l_dice).item()
 
         avg_loss = val_loss / len(val_loader)
+        train_avg = train_loss_accum / len(train_loader)
         print(
-            f"Epoch {epoch+1}: Train Loss = {train_loss_accum/len(train_loader):.4f} | "
+            f"Epoch {epoch + 1}: "
+            f"Train Loss = {train_avg:.4f} | "
             f"Val Loss = {avg_loss:.4f}"
         )
 
