@@ -38,7 +38,7 @@ _Last updated: December 17, 2025_
   - [Geometric Feature Engineering](#geometric-feature-engineering)
   - [Learning Architecture](#learning-architecture)
   - [Evaluation Protocol](#evaluation-protocol)
-- [Results (Illustrative)](#results-illustrative)
+- [Qualitative Findings](#qualitative-findings)
 - [Code Structure](#code-structure)
 - [Reproducibility & Installation](#reproducibility--installation)
   - [Data Availability](#data-availability)
@@ -200,6 +200,10 @@ Under the described experimental setup:
 - Qualitative results show coherent reconstruction of plant structure
 
 Limitations include stem–stake ambiguity and boundary artifacts due to resolution constraints.
+
+For a comprehensive discussion of experimental results, quantitative metrics, and additional analyses, please refer to the full exit report available here:  
+
+[`docs/ORNL_DECNN_Exit_Report.pdf`](docs/ORNL_DECNN_Exit_Report.pdf)
 
 ---
 
