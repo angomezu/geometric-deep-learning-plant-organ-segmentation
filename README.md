@@ -1,256 +1,210 @@
-# Plant Organ Segmentation for Phenotyping via Geometric Deep Learning on 3D Point Clouds
+# Plant Organ Segmentation from 3D LiDAR Point Clouds via Geometric Deep Learning
 
-_Last updated: December 14, 2025_
+<div align="center">
 
 ### Authors
 
-**Angel A. Barrera-Gomez**  
-M.S. Applied Data Science  
-B.E. Computer Systems Engineering  
+**[Angel A. Barrera-Gomez](https://www.linkedin.com/in/angomezu/)**,  
+**[Inhwan Jung](https://www.linkedin.com/in/INHWAN_LINKEDIN/)**,  
+**[Luke Hussung](https://www.linkedin.com/in/luke-hussung-4a2671252/)**  
+
+Applied Data Science Program  
 Department of Mathematics & Statistics  
 East Tennessee State University  
 
-**Inhwan Jung**  
-M.S. Applied Data Science  
-Department of Mathematics & Statistics  
-East Tennessee State University  
+**External Research Collaboration**  
+Oak Ridge National Laboratory (ORNL)
 
-**Luke Hussung**  
-M.S. Applied Data Science  
-Department of Mathematics & Statistics  
-East Tennessee State University  
+![rotation](rotation.gif)
+
+
+</div>
 
 ---
 
-### Academic Advisors
+## Abstract
 
-**Dr. Jeff R. Knisley**  
-Department of Mathematics & Statistics  
-East Tennessee State University  
+Semantic segmentation of unstructured 3D point clouds remains a challenging problem, particularly in domains where appearance cues are unavailable. In plant phenotyping, LiDAR-based point clouds provide rich geometric information but suffer from class imbalance, occlusion, and geometric ambiguity between biological and abiotic structures.
 
-**Dr. Michele Joyner**  
-Department of Mathematics & Statistics  
-East Tennessee State University  
-
-**Dr. Robert M. Price**  
-Department of Mathematics & Statistics  
-East Tennessee State University  
+This work investigates the use of **geometry-aware deep learning** for organ-level plant segmentation using **Dynamic Edge Convolutional Neural Networks (DECNNs)**. We propose a structured annotation protocol, geometric feature augmentation, and a loss formulation tailored to highly imbalanced plant data. The released code focuses on methodology and reproducibility and accompanies an ongoing research manuscript.
 
 ---
 
-### External Research Collaborators (Oak Ridge National Laboratory)
+## Highlights
 
-**Dr. John Lagergren**  
-R&D Associate Staff Member  
-Biosciences Division  
-Oak Ridge National Laboratory  
-
-**Dr. Larry M. York**  
-Senior Staff Scientist  
-Biosciences Division  
-Oak Ridge National Laboratory  
-
-**Anand, Seethepalli**  
-Biosciences Computer Vision Developer  
-Biosciences Division  
-Oak Ridge National Laboratory  
+- Geometry-only semantic segmentation of plant organs from LiDAR point clouds
+- Manual annotation protocol designed for biological structures
+- Integration of local geometric descriptors into dynamic graph CNNs
+- Robust handling of extreme class imbalance
+- Research-oriented, modular codebase aligned with academic workflows
 
 ---
 
-## Overview
+## Repository Purpose
 
-This repository contains research code developed to study **semantic segmentation of 3D plant point clouds** using geometric supervised deep learning techniques. The project focuses on separating biologically meaningful plant organs, **Stem, Leaf, and Support Stake**, from high-resolution LiDAR scans collected at the Advanced Plant Phenotyping Laboratory (APPL) at Oak Ridge National Laboratory.
+This repository releases **research code** developed in collaboration with **Oak Ridge National Laboratory** for studying semantic segmentation of 3D plant point clouds.
 
-The work was conducted as part of the graduate course **STAT 5920 – Internship Experience in Data Science II** at East Tennessee State University and represents an academic research collaboration rather than a deployed production system.
-
----
-
-## Research Motivation
-
-High-throughput plant phenotyping is critical for bioenergy and agricultural research, yet traditional 2D imaging approaches struggle to capture volumetric and structural traits of complex, woody plants. LiDAR-based 3D point clouds offer rich geometric information but introduce challenges related to:
-
-- Geometric ambiguity between biological and abiotic structures.
-- Severe class imbalance (e.g., stems vs. leaves).
-- Lack of spectral (RGB) information.
-- Occlusion and sparse sampling at early growth stages.
-
-This project investigates whether **explicit geometric feature engineering combined with Dynamic Edge Convolutional Neural Networks (DECNNs)** can effectively address these challenges.
-
-<p align="center">
-  <img src="assets/3D_scan.jpg" alt="3D LiDAR scan of plant in controlled phenotyping environment" width="450"><br>
-  <em>Figure 1: Example 3D LiDAR scan of a young plant acquired in a controlled phenotyping environment. The resulting point cloud captures fine-grained geometric structure but lacks spectral information, motivating the need for geometry-aware learning methods.</em>
-</p>
-
+**Important:**  
+- No raw or processed data is included  
+- No trained model checkpoints are provided  
+- The repository focuses on **methodology, architecture, and evaluation**
 
 ---
 
-## Scope and Limitations
+## Method Overview
 
-**Important Notice**
+### Problem Setting
 
-- No data is included in this repository.  
-- All raw and processed point cloud data, labels, and metadata provided by ORNL are excluded due to confidentiality and intellectual property restrictions.  
-- The code is shared **for research and methodological demonstration purposes only**.
+Given a 3D LiDAR point cloud acquired in a controlled phenotyping environment, the goal is to assign each point a semantic label corresponding to biologically meaningful plant structures:
 
-Any results shown here are conditional on the specific dataset, annotation protocol, and experimental setup described in the accompanying documentation.
+- **Stem**
+- **Leaf**
+- **Support Stake**
+- **Background**
 
----
-
-## Methodology Summary
-
-### Manual Annotation Protocol
-
-A structured, rule-based manual annotation protocol was developed using **CloudCompare** to label individual point clouds into the following semantic classes:
-
-- Stem  
-- Leaf  
-- Support Stake  
-- Background  
-
-The protocol emphasizes:
-
-- Complete coverage (every point assigned a class). 
-- Priority on accurate stem segmentation.
-- Consistent naming conventions.
-- Careful handling of organ overlap and occlusion.
-
-A total of **30 point clouds** were fully annotated to support supervised learning.
-
-
-<p align="center">
-  <img src="assets/segmentation_3_leafs.png" alt="Annotated plant point cloud example 1" width="380">
-  <img src="assets/segmentation2.png" alt="Annotated plant point cloud example 2" width="380">
-</p>
-
-<p align="center">
-  <em>Figure 2: Examples of manually annotated 3D plant point clouds used for supervised training. Points are labeled into stem, leaf, support stake, and background classes following a rule-based annotation protocol.</em>
-</p>
+The task is challenging due to:
+- Severe class imbalance
+- Structural similarity between stems and stakes
+- Occlusion and sparse sampling
+- Absence of RGB or spectral information
 
 ---
 
-### Feature Engineering
+### Annotation Protocol
 
-Raw XYZ coordinates alone were insufficient to distinguish flat leaves from cylindrical stems and stakes. To enrich the input representation, local geometric descriptors were computed using a **radius-based (ε-neighborhood) approach**, where each point aggregates information from neighboring points within a fixed spatial radius.
+A rule-based annotation protocol was developed using **CloudCompare** to ensure:
 
-The engineered features include:
+- Complete point-wise labeling
+- Priority on accurate stem delineation
+- Consistent handling of overlapping organs
+
+A total of **30 fully annotated point clouds** were used for supervised learning.
+
+---
+
+### Geometric Feature Engineering
+
+To overcome the limitations of raw XYZ coordinates, each point is augmented with local geometric descriptors computed within a fixed-radius neighborhood:
 
 - Linearity  
 - Planarity  
 - Sphericity  
 - Relative Height  
 
-These features capture local shape characteristics at a physically meaningful scale, which is critical for organ-level discrimination in LiDAR point clouds.
+These features encode local shape properties critical for organ discrimination.
 
 ---
 
-### Model Architecture
+### Learning Architecture
 
-The primary model implemented is a **Dynamic Edge Convolutional Neural Network (DECNN)**, which:
+The core model is a **Dynamic Edge Convolutional Neural Network (DECNN)** that:
 
-- Constructs local neighborhood graphs dynamically at each layer.
-- Learns edge features capturing local geometric relationships.
-- It is well-suited for unstructured point cloud data.
+- Dynamically constructs neighborhood graphs per layer
+- Learns edge features capturing local geometry
+- Operates directly on unstructured point clouds
 
-To address severe class imbalance, a composite loss function combining **Weighted Cross-Entropy and Dice Loss** was used.
+To address extreme class imbalance, training uses a composite loss combining:
 
----
-
-### Evaluation Strategy
-
-Model performance was evaluated using:
-
-- Intersection over Union (IoU).
-- Recall and Precision (per class).
-- Sample-averaged metrics.
-- Bootstrapped confidence intervals.
-
-Qualitative evaluation was performed via 3D visualizations of predicted segmentations to analyze structural reconstruction and failure modes.
+- Weighted Cross-Entropy  
+- Dice Loss  
 
 ---
 
-## Repository Structure
+### Evaluation Protocol
 
-The project is organized to clearly separate **data ingestion**, **model logic**, and **execution drivers**, enabling reproducible and corruption-free experimentation. Rather than relying on exploratory notebook-based workflows, the codebase is structured as a modular pipeline that reflects how geometric deep learning systems are developed, validated, and evaluated in practice.
+Model performance is evaluated using:
 
-To comply with confidentiality and intellectual property requirements associated with Oak Ridge National Laboratory (ORNL), this repository does not include raw or processed data, model checkpoints, prediction outputs, or intermediate artifacts. The directory structure is preserved to document the full experimental workflow, while all shared code focuses on methodology, architecture, and evaluation logic.
+- Intersection over Union (IoU)
+- Precision and Recall (per class)
+- Sample-averaged metrics
+- Bootstrapped confidence intervals
 
+Qualitative evaluation is performed via 3D visualization of predicted segmentations.
 
-```text
-├── data/
-│   ├── test/                 # Single .txt file for unseen testing
-│   ├── train/
-│   │   ├── raw/              # Source .txt label files
-│   │   └── processed/        # Generated .pt tensors
-│   └── val/
-│       ├── raw/
-│       └── processed/
-│
-├── models/                   # Best model weights saved by train.py
-├── predictions/              # Output .pcd files for CloudCompare visualization
-├── other_scripts/            # Experimental and exploratory scripts
-│
-├── src/
-│   ├── dataset.py            # ETL pipeline and feature engineering
-│   ├── model.py              # Dynamic Edge CNN architecture definition
-│   └── inference.py          # Inference and post-processing logic
-│
-├── validations/              # EDA and data integrity checks
-│   ├── check_data.py         # Dataset consistency validation
-│   ├── check_labels.py       # Label integrity and class distribution checks
-│   └── count_nans.py         # Numerical stability and NaN detection
-│
-├── train.py                  # Training loop and experiment configuration
-├── evaluation.py             # Metric auditing and bootstrapped evaluation
-├── visualization.py          # Visualization utilities
-└── README.md
-
-```
 ---
 
 ## Results (Illustrative)
 
-Under the described experimental setup, the model achieved:
+Under the described experimental setup:
 
-- Strong segmentation performance on the dominant Leaf class.  
-- High recall for the critical Stem class despite severe class imbalance.  
-- Meaningful reconstruction of primary plant structure in qualitative analysis.  
+- Strong performance is observed on the dominant **Leaf** class
+- High recall is achieved for the biologically critical **Stem** class
+- Qualitative results show coherent reconstruction of plant structure
 
-Observed limitations include stem–stake ambiguity and resolution-induced boundary artifacts, which are discussed in detail in the accompanying report.
-
-<p align="center">
-  <img src="assets/debug_plant_2.png" alt="DECNN prediction before fine-tuning showing noise" width="320">
-  <img src="assets/DECNN_Prediction.png" alt="DECNN prediction after fine-tuning" width="380">
-</p>
-
-<p align="center">
-  <em>
-    Figure 3: Qualitative comparison of DECNN segmentation results. 
-    <strong>Left:</strong> Early-stage model output prior to fine-tuning, illustrating high-frequency noise and fragmented predictions.
-    <strong>Right:</strong> Final model prediction after feature engineering and hyperparameter tuning, showing coherent reconstruction of plant organs.
-  </em>
-</p>
+Limitations include stem–stake ambiguity and boundary artifacts due to resolution constraints.
 
 ---
 
-## Future Research Directions
+## Code Structure
+
+The repository is organized as a modular research pipeline:
+
+```text
+├── data/                # Directory structure only (no data included)
+│   ├── train/
+│   ├── val/
+│   └── test/
+│
+├── src/
+│   ├── dataset.py       # ETL and geometric feature computation
+│   ├── model.py         # Dynamic Edge CNN architecture
+│   └── inference.py     # Inference and post-processing
+│
+├── validations/         # Data integrity and sanity checks
+│   ├── check_data.py
+│   ├── check_labels.py
+│   └── count_nans.py
+│
+├── train.py             # Training loop
+├── evaluation.py        # Metric computation and bootstrapping
+├── visualization.py    # 3D visualization utilities
+└── README.md
+```
+
+All directories related to raw data, predictions, and model checkpoints are **intentionally excluded** from this repository to comply with data confidentiality and intellectual property constraints associated with Oak Ridge National Laboratory (ORNL).
+
+---
+
+### Reproducibility
+
+Due to ORNL data restrictions, reproducing the full experimental results requires **authorized access** to the Advanced Plant Phenotyping Laboratory (APPL) dataset.
+
+However, the codebase is written to be **dataset-agnostic** and can be readily adapted to alternative 3D point cloud datasets with compatible annotation formats and geometric structure.
+
+---
+
+### Future Research Directions
 
 Potential extensions of this work include:
 
-- Incorporation of RGB or multispectral data to reduce geometric ambiguity and improve organ-level discrimination.  
-- Higher-resolution training enabled by improved hardware resources, allowing finer-scale geometric feature extraction.  
-- Expansion of the dataset across multiple growth stages and environmental conditions to study temporal generalization.  
-- Comparative evaluation of alternative point cloud architectures (e.g., PointNet++, KPConv, transformer-based models).  
-- Integration of MLOps practices to support reproducible experimentation and scalable deployment, including containerization of the training and inference pipelines using Docker and orchestration via Kubernetes or similar workflow managers. Such extensions would enable automated model versioning, experiment tracking, and controlled deployment of trained models for large-scale phenotyping studies.
-
+- Incorporation of RGB or multispectral information to reduce geometric ambiguity
+- Evaluation of alternative point cloud architectures (e.g., PointNet++, KPConv, transformer-based models)
+- Temporal modeling across plant growth stages
+- Scalable experimentation via containerization and MLOps workflows (e.g., Docker, experiment tracking, automated evaluation pipelines)
 
 ---
 
-## Acknowledgments
+### Citation
 
-This research used resources of the **Advanced Plant Phenotyping Laboratory** and the **Center for Bioenergy Innovation (CBI)**, which is a U.S. Department of Energy Bioenergy Research Center supported by the Office of Biological and Environmental Research in the DOE Office of Science. Oak Ridge National Laboratory is managed by **UT-Battelle, LLC** for the U.S. Department of Energy under Contract Number **DE-AC05-00OR22725**.
+If you find this work useful in your research, please consider citing:
+
+```bibtex
+@unpublished{barrera2025plantseg,
+  title  = {Plant Organ Segmentation via Geometric Deep Learning on 3D Point Clouds},
+  author = {Barrera-Gomez, Angel A. and Jung, Inhwan and Hussung, Luke},
+  year   = {2025}
+}
+```
+
+### Acknowledgments
+
+This research used resources of the Advanced Plant Phenotyping Laboratory and the Center for Bioenergy Innovation (CBI), which is a U.S. Department of Energy Bioenergy Research Center supported by the Office of Biological and Environmental Research in the DOE Office of Science. Oak Ridge National Laboratory is managed by UT-Battelle, LLC for the U.S. Department of Energy under Contract Number DE-AC05-00OR22725.
+
+We thank **Dr. John Lagergren**, **Dr. Larry M. York**, and **Anand Seethepalli** (Oak Ridge National Laboratory, Biosciences Division) for providing access to experimental data, domain expertise, and valuable feedback throughout the project.
+
+
 
 ---
+### Disclaimer
 
-## Disclaimer
-
-The views and conclusions contained in this repository are those of the authors and do not necessarily represent the views of Oak Ridge National Laboratory or the U.S. Department of Energy. The code is provided for academic and research purposes only.
+The views and conclusions expressed in this repository are those of the authors and do not necessarily represent the views of Oak Ridge National Laboratory or the U.S. Department of Energy. The code is provided for **academic and research purposes only**.
