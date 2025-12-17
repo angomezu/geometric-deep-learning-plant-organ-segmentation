@@ -258,8 +258,8 @@ The main dependencies of the project are listed below.
 ### Step 1: Clone the Repository and Create Environment
 
 ```bash
-git clone https://github.com/<your-username>/<your-repo-name>.git
-cd <your-repo-name>
+git clone https://github.com/angomezu/geometric-deep-learning-plant-organ-segmentation.git
+cd geometric-deep-learning-plant-organ-segmentation
 
 conda create -n plantseg python=3.9 pip
 conda activate plantseg
