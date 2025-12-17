@@ -24,6 +24,28 @@ Oak Ridge National Laboratory (ORNL)
 
 ---
 
+## Table of Contents
+
+- [Abstract](#abstract)
+- [Contributions](#contributions)
+- [Repository Purpose](#repository-purpose)
+- [Tech Stack](#tech-stack)
+- [Method Overview](#method-overview)
+  - [Problem Setting](#problem-setting)
+  - [Annotation Protocol](#annotation-protocol)
+  - [Geometric Feature Engineering](#geometric-feature-engineering)
+  - [Learning Architecture](#learning-architecture)
+  - [Evaluation Protocol](#evaluation-protocol)
+- [Results (Illustrative)](#results-illustrative)
+- [Code Structure](#code-structure)
+- [Reproducibility](#reproducibility)
+- [Future Research Directions](#future-research-directions)
+- [Citation](#citation)
+- [Acknowledgments](#acknowledgments)
+- [Disclaimer](#disclaimer)
+
+
+---
 ## Abstract
 
 Semantic segmentation of unstructured 3D point clouds remains a challenging problem, particularly in domains where appearance cues are unavailable. In plant phenotyping, LiDAR-based point clouds provide rich geometric information but suffer from class imbalance, occlusion, and geometric ambiguity between biological and abiotic structures.
@@ -34,11 +56,11 @@ This work investigates the use of **geometry-aware deep learning** for organ-lev
 
 ## Contributions
 
-- Geometry-only semantic segmentation of plant organs from LiDAR point clouds
-- Manual annotation protocol designed for biological structures
-- Integration of local geometric descriptors into dynamic graph CNNs
-- Robust handling of extreme class imbalance
-- Research-oriented, modular codebase aligned with academic workflows
+- Geometry-based semantic segmentation of plant organs from 3D LiDAR point clouds  
+- A structured manual annotation protocol tailored to complex biological structures  
+- Integration of local geometric descriptors within dynamic graph convolutional networks  
+- Robust learning under severe class imbalance in organ-level segmentation tasks  
+- A research-oriented, modular codebase designed to support reproducible experimentation
 
 ---
 
@@ -50,6 +72,41 @@ This repository releases **research code** developed in collaboration with **Oak
 - No raw or processed data is included  
 - No trained model checkpoints are provided  
 - The repository focuses on **methodology, architecture, and evaluation**
+
+---
+
+## Tech Stack
+
+### Programming Language
+- Python
+
+### Deep Learning & Graph Neural Networks
+- PyTorch
+- PyTorch Geometric (EdgeConv, radius-based dynamic graph construction)
+
+### 3D Point Cloud Processing
+- Open3D
+- CloudCompare (manual annotation and ground truth generation)
+
+### Feature Engineering & Geometry
+- NumPy
+- Eigenvalue-based geometric descriptors (surface normals, linearity, planarity, sphericity, relative height)
+
+### Machine Learning & Post-processing
+- scikit-learn (DBSCAN, PCA)
+
+### Data Augmentation & Pipelines
+- Torch Geometric Transforms (voxelization, rotation, scaling, jitter)
+
+### Evaluation & Statistics
+- IoU, Precision, and Recall metrics
+- Bootstrap resampling (95% confidence intervals)
+
+### Visualization & Media
+- Open3D visualization
+
+### Hardware Acceleration
+- CUDA
 
 ---
 
@@ -74,13 +131,13 @@ The task is challenging due to:
 
 ### Annotation Protocol
 
-A rule-based annotation protocol was developed using **CloudCompare** to ensure:
+To construct reliable ground-truth labels for supervised learning, a structured, rule-based annotation protocol was developed using CloudCompare. The protocol was designed to ensure:
 
-- Complete point-wise labeling
-- Priority on accurate stem delineation
-- Consistent handling of overlapping organs
+- Complete point-wise labeling of all visible structures  
+- Priority on accurate stem delineation as the primary structural axis  
+- Consistent handling of overlapping organs and geometric ambiguity  
 
-A total of **30 fully annotated point clouds** were used for supervised learning.
+A total of 30 fully annotated 3D LiDAR point clouds were generated and used for supervised training and evaluation.
 
 ---
 
@@ -192,7 +249,7 @@ If you find this work useful in your research, please consider citing:
 
 ```bibtex
 @unpublished{barrera2025plantseg,
-  title  = {Plant Organ Segmentation via Geometric Deep Learning on 3D Point Clouds},
+  title  = {Plant Organ Segmentation from 3D LiDAR Point Clouds via Geometric Deep Learning},
   author = {Barrera-Gomez, Angel A. and Jung, Inhwan and Hussung, Luke},
   year   = {2025}
 }
