@@ -15,7 +15,7 @@ East Tennessee State University
 **External Research Collaboration**  
 Oak Ridge National Laboratory (ORNL)
 
-![rotation](rotation.gif)
+![rotation](prediction.gif)
 
 
 </div>
