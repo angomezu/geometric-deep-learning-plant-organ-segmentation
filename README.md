@@ -34,7 +34,7 @@ _Last updated: December 17, 2025_
 - [Tech Stack](#tech-stack)
 - [Method Overview](#method-overview)
   - [Problem Setting](#problem-setting)
-  - [Annotation Protocol](#annotation-protocol)
+  - [Manual Annotation Protocol](#manual-annotation-protocol)
   - [Geometric Feature Engineering](#geometric-feature-engineering)
   - [Learning Architecture](#learning-architecture)
   - [Evaluation Protocol](#evaluation-protocol)
@@ -138,15 +138,23 @@ The task is challenging due to:
 
 ---
 
-### Annotation Protocol
+### Manual Annotation Protocol
 
-To construct reliable ground-truth labels for supervised learning, a structured, rule-based annotation protocol was developed using CloudCompare. The protocol was designed to ensure:
+High-quality ground truth is critical for supervised semantic segmentation of 3D point clouds, particularly in plant phenotyping where geometric ambiguity, occlusion, and class imbalance are prevalent. To ensure consistent, accurate, and reproducible labels, a **structured manual annotation protocol** was developed using **CloudCompare**.
 
-- Complete point-wise labeling of all visible structures  
-- Priority on accurate stem delineation as the primary structural axis  
-- Consistent handling of overlapping organs and geometric ambiguity  
+The protocol defines a rule-based workflow for point-wise segmentation and labeling of LiDAR point clouds into four semantic classes: **stem**, **leaf**, **stake**, and **background**. It enforces strict completeness, naming conventions, boundary rules, and class assignment guidelines, ensuring that every point in the original scan is assigned a biologically meaningful label.
+
+This annotation strategy was essential for:
+- Producing reliable supervision signals for deep learning
+- Reducing label noise in geometrically ambiguous regions
+- Enabling consistent evaluation across samples
+- Supporting reproducibility and future dataset extensions
 
 A total of 30 fully annotated 3D LiDAR point clouds were generated and used for supervised training and evaluation.
+
+The full annotation procedure, including setup instructions, segmentation steps, labeling rules, and export formats, is documented in detail here:
+
+[`docs/3D_Plant_Segmentation_Protocol.pdf`](docs/3D_Plant_Segmentation_Protocol.pdf)
 
 ---
 
