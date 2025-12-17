@@ -88,6 +88,14 @@ This repository releases **research code** developed in collaboration with **Oak
 
 ---
 
+## Getting Started
+
+To run the pipeline end-to-end: install dependencies, place labeled point clouds in `data/train` and `data/val`,
+train with `python train.py`, then evaluate with `python evaluation.py` and visualize with `python visualization.py`.
+See [Reproducibility & Installation](#reproducibility--installation) for the full setup instructions.
+
+---
+
 ## Tech Stack
 
 ### Programming Language
@@ -348,6 +356,14 @@ pip install open3d numpy scikit-learn tqdm
 
 ---
 
+### Model checkpoints (.pth)
+
+This project uses PyTorch checkpoint files (`.pth`) to store trained model weights.
+Running `python train.py` will save a checkpoint to `models/` (see the filename in `train.py`).
+Update `MODEL_PATH` (evaluation) and `CHECKPOINT` (visualization) to point to your `.pth`.
+
+---
+
 ### Future Research Directions
 
 Potential extensions of this work include:
@@ -370,6 +386,39 @@ If you find this work useful in your research, please consider citing:
   year   = {2025}
 }
 ```
+---
+### External Research Collaborators 
+**Oak Ridge National Laboratory (ORNL) | Biosciences Division**
+
+**Dr. John Lagergren**  
+R&D Associate Staff Member  
+lagergrenjr@ornl.gov  
+
+**Dr. Larry M. York**  
+Senior Staff Scientist  
+yorklm@ornl.gov  
+
+**Anand Seethepalli**  
+Biosciences Computer Vision Developer  
+seethepallia@ornl.gov  
+
+---
+
+## Academic Advisors
+**East Tennessee State University (ETSU) | Department of Mathematics & Statistics**
+
+**Dr. Jeff R. Knisley**  
+Professor  
+knisley@etsu.edu  
+
+**Dr. Robert M. Price**  
+Professor  
+pricer@etsu.edu  
+
+**Dr. Michele Joyner**  
+joynerm@etsu.edu  
+
+---
 
 ### Acknowledgments
 
