@@ -9,7 +9,11 @@ from src.model import OakRidgeSegmenter
 
 # CONFIGURATION
 NUM_CLASSES = 4
-# Change this path as needed
+# CHECKPOINT points to a trained PyTorch model weights file (.pth).
+# Create it by running `python train.py` (it saves into ./models/ by default),
+# then update this path to the checkpoint you want to visualize.
+CHECKPOINT = "models/model_run4_nuclear.pth"
+
 CHECKPOINT = r"C:\Oak Ridge\Model\models\model_run4_nuclear.pth"
 
 
