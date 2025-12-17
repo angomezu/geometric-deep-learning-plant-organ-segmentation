@@ -38,12 +38,18 @@ Oak Ridge National Laboratory (ORNL)
   - [Evaluation Protocol](#evaluation-protocol)
 - [Results (Illustrative)](#results-illustrative)
 - [Code Structure](#code-structure)
-- [Reproducibility](#reproducibility)
+- [Reproducibility & Installation](#reproducibility--installation)
+  - [Data Availability](#data-availability)
+  - [Installation](#installation)
+    - [Step 1: Clone the Repository and Create Environment](#step-1-clone-the-repository-and-create-environment)
+    - [Step 2: Install PyTorch](#step-2-install-pytorch)
+    - [Step 3: Install PyTorch Geometric](#step-3-install-pytorch-geometric)
+    - [Step 4: Install 3D Processing and ML Dependencies](#step-4-install-3d-processing-and-ml-dependencies)
+- [Notes on Usage](#notes-on-usage)
 - [Future Research Directions](#future-research-directions)
 - [Citation](#citation)
 - [Acknowledgments](#acknowledgments)
 - [Disclaimer](#disclaimer)
-
 
 ---
 ## Abstract
@@ -224,11 +230,84 @@ All directories related to raw data, predictions, and model checkpoints are **in
 
 ---
 
-### Reproducibility
+## Reproducibility & Installation
 
-Due to ORNL data restrictions, reproducing the full experimental results requires **authorized access** to the Advanced Plant Phenotyping Laboratory (APPL) dataset.
+### Data Availability
 
-However, the codebase is written to be **dataset-agnostic** and can be readily adapted to alternative 3D point cloud datasets with compatible annotation formats and geometric structure.
+Due to data access restrictions associated with Oak Ridge National Laboratory (ORNL), the original datasets used in this study are **not publicly available**. Full reproduction of the reported experimental results therefore requires **authorized access** to the Advanced Plant Phenotyping Laboratory (APPL) data.
+
+That said, the codebase is **dataset-agnostic by design**. Any 3D LiDAR point cloud dataset can be used **provided that**:
+- Point clouds are available in **XYZ format** (e.g., `.txt`, `.pcd`, `.ply`)
+- Point-wise semantic labels are provided (or generated) following a compatible annotation scheme
+- The data can be adapted to the expected input format used by the dataset loader
+
+This enables reuse of the pipeline for **methodological experimentation**, architectural benchmarking, and extension to alternative 3D segmentation tasks.
+
+
+### Installation
+
+The main dependencies of the project are listed below.
+
+**Core Requirements**
+- Python ≥ 3.8
+- CUDA ≥ 11.x (optional, but recommended for training)
+- PyTorch + PyTorch Geometric
+- Open3D
+
+
+### Step 1: Clone the Repository and Create Environment
+
+```bash
+git clone https://github.com/<your-username>/<your-repo-name>.git
+cd <your-repo-name>
+
+conda create -n plantseg python=3.9 pip
+conda activate plantseg
+```
+
+### Step 2: Install PyTorch
+
+Install PyTorch with CUDA support (adjust CUDA version if needed):
+
+```bash
+pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118
+```
+
+For CPU-only usage:
+
+```bash
+pip install torch torchvision torchaudio
+```
+
+### Step 3: Install PyTorch Geometric
+
+Install PyTorch Geometric and its dependencies:
+
+```bash
+pip install torch-geometric
+```
+
+If you encounter issues, refer to the official installation guide:
+https://pytorch-geometric.readthedocs.io/en/latest/install/installation.html
+
+### Step 4: Install 3D Processing and ML Dependencies
+
+```bash
+pip install open3d numpy scikit-learn tqdm
+```
+
+
+## Notes on Usage
+
+- Training scripts assume point-wise labeled data
+- Data loaders and feature computation logic are implemented in src/dataset.py
+- Visualization utilities require a functioning OpenGL context (for on-screen rendering)
+
+### Users intending to apply the pipeline to new datasets may need to:
+
+- Adapt the annotation format
+- Update normalization statistics
+- Adjust neighborhood radius and voxelization parameters
 
 ---
 
@@ -260,7 +339,6 @@ If you find this work useful in your research, please consider citing:
 This research used resources of the Advanced Plant Phenotyping Laboratory and the Center for Bioenergy Innovation (CBI), which is a U.S. Department of Energy Bioenergy Research Center supported by the Office of Biological and Environmental Research in the DOE Office of Science. Oak Ridge National Laboratory is managed by UT-Battelle, LLC for the U.S. Department of Energy under Contract Number DE-AC05-00OR22725.
 
 We thank **Dr. John Lagergren**, **Dr. Larry M. York**, and **Anand Seethepalli** (Oak Ridge National Laboratory, Biosciences Division) for providing access to experimental data, domain expertise, and valuable feedback throughout the project.
-
 
 
 ---
