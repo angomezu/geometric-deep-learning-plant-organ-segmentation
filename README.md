@@ -15,10 +15,12 @@ East Tennessee State University
 **External Research Collaboration**  
 Oak Ridge National Laboratory (ORNL)
 
-![rotation](prediction.gif)
-
-
 </div>
+
+<p align="center">
+  <img src="assets/prediction.gif" alt="3D LiDAR scan of plant in controlled phenotyping environment" width="750"><br>
+  <em>Figure 1:  Final model prediction after feature engineering and hyperparameter tuning, showing coherent reconstruction of plant organs.</em>
+</p>
 
 ---
 
