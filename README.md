@@ -5,7 +5,7 @@
 ![License](https://img.shields.io/badge/license-academic-lightgrey)
 ![Open Source](https://img.shields.io/badge/open--source-yes-success)  
 
-_Last updated: December 17, 2025_
+_Last updated: December 18, 2025_
 
 <div align="center">
 
