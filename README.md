@@ -3,6 +3,7 @@
 ![CI](https://github.com/angomezu/geometric-deep-learning-plant-organ-segmentation/actions/workflows/ci.yml/badge.svg)
 ![Python](https://img.shields.io/badge/python-3.8%2B-blue)
 ![License](https://img.shields.io/badge/license-academic-lightgrey)
+![Open Source](https://img.shields.io/badge/open--source-yes-success)  
 
 _Last updated: December 17, 2025_
 
