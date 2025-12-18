@@ -69,13 +69,6 @@ Semantic segmentation of unstructured 3D point clouds remains a challenging prob
 This work investigates the use of **geometry-aware deep learning** for organ-level plant segmentation using **Dynamic Edge Convolutional Neural Networks (DECNNs)**. We propose a structured annotation protocol, geometric feature augmentation, and a loss formulation tailored to highly imbalanced plant data. The released code focuses on methodology and reproducibility and accompanies an ongoing research manuscript.
 
 Our goal with this applied research project is to demonstrate how computer vision tools have a direct impact on industry problems such as 3D perception, robotics, autonomous systems, medical imaging, and industrial and agricultural inspection.
-
-We achieved: 
-
-- Semantic segmentation of unstructured 3D sensor data
-- Model a graph neural network for spatial reasoning
-- Training under class imbalance
-- Reproducibility ML pipelines with CI and evaluation rigor
   
 ---
 
@@ -428,6 +421,7 @@ Professor
 pricer@etsu.edu  
 
 **Dr. Michele Joyner**  
+Professor  
 joynerm@etsu.edu  
 
 ---
