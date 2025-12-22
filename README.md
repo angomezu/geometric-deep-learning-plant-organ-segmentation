@@ -95,44 +95,10 @@ This repository releases **research code** developed in collaboration with **Oak
 
 ## Getting Started
 
-To run the pipeline end-to-end: install dependencies, place labeled point clouds in `data/train` and `data/val`,
+### Installation
+
+Please follow the [installation guide](assets/docs/INSTALL.md). To run the pipeline end-to-end make sure to install dependencies, place labeled point clouds in `data/train` and `data/val`,
 train with `python train.py`, then evaluate with `python evaluation.py` and visualize with `python visualization.py`.
-See [Reproducibility & Installation](#reproducibility--installation) for the full setup instructions.
-
----
-
-## Tech Stack
-
-### Programming Language
-- Python
-
-### Deep Learning & Graph Neural Networks
-- PyTorch
-- PyTorch Geometric (EdgeConv, radius-based dynamic graph construction)
-
-### 3D Point Cloud Processing
-- Open3D
-- CloudCompare (manual annotation and ground truth generation)
-
-### Feature Engineering & Geometry
-- NumPy
-- Eigenvalue-based geometric descriptors (surface normals, linearity, planarity, sphericity, relative height)
-
-### Machine Learning & Post-processing
-- scikit-learn (DBSCAN, PCA)
-
-### Data Augmentation & Pipelines
-- Torch Geometric Transforms (voxelization, rotation, scaling, jitter)
-
-### Evaluation & Statistics
-- IoU, Precision, and Recall metrics
-- Bootstrap resampling (95% confidence intervals)
-
-### Visualization & Media
-- Open3D visualization
-
-### Hardware Acceleration
-- CUDA
 
 ---
 
