@@ -212,7 +212,7 @@ Under the described experimental setup:
 
 Limitations include stem–stake ambiguity and boundary artifacts due to resolution constraints.
 
-For a comprehensive discussion of experimental results, quantitative metrics, and additional analyses, please refer to the full exit report available here: [Exit Report](assests/docs/ORNL_DECNN_Exit_Report.pdf)
+For a comprehensive discussion of experimental results, quantitative metrics, and additional analyses, please refer to the full exit report available here: [Exit Report](assets/docs/ORNL_DECNN_Exit_Report.pdf)
 
 ---
 
