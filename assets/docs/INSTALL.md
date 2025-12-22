@@ -104,3 +104,36 @@ Running `python train.py` will save a checkpoint to `models/` (see the filename 
 Update `MODEL_PATH` (evaluation) and `CHECKPOINT` (visualization) to point to your `.pth`.
 
 ---
+
+## Tech Stack
+
+### Programming Language
+- Python
+
+### Deep Learning & Graph Neural Networks
+- PyTorch
+- PyTorch Geometric (EdgeConv, radius-based dynamic graph construction)
+
+### 3D Point Cloud Processing
+- Open3D
+- CloudCompare (manual annotation and ground truth generation)
+
+### Feature Engineering & Geometry
+- NumPy
+- Eigenvalue-based geometric descriptors (surface normals, linearity, planarity, sphericity, relative height)
+
+### Machine Learning & Post-processing
+- scikit-learn (DBSCAN, PCA)
+
+### Data Augmentation & Pipelines
+- Torch Geometric Transforms (voxelization, rotation, scaling, jitter)
+
+### Evaluation & Statistics
+- IoU, Precision, and Recall metrics
+- Bootstrap resampling (95% confidence intervals)
+
+### Visualization & Media
+- Open3D visualization
+
+### Hardware Acceleration
+- CUDA
