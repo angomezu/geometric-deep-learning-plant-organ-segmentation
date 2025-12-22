@@ -25,7 +25,7 @@ _Last updated: December 18, 2025_
 </div>
 
 <p align="center">
-  <img src="assets/prediction.gif" alt="3D LiDAR scan of plant in controlled phenotyping environment" width="750"><br>
+  <img src="assets/images/prediction.gif" alt="3D LiDAR scan of plant in controlled phenotyping environment" width="750"><br>
   <em>Figure 1:  Final model prediction after feature engineering and hyperparameter tuning, showing coherent reconstruction of plant organs 65.58% mIoU and 82% stem recall.</em>
 </p>
 
