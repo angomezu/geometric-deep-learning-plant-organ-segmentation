@@ -107,33 +107,33 @@ Update `MODEL_PATH` (evaluation) and `CHECKPOINT` (visualization) to point to yo
 
 ## Tech Stack
 
-### Programming Language
+#### Programming Language
 - Python
 
-### Deep Learning & Graph Neural Networks
+#### Deep Learning & Graph Neural Networks
 - PyTorch
 - PyTorch Geometric (EdgeConv, radius-based dynamic graph construction)
 
-### 3D Point Cloud Processing
+#### 3D Point Cloud Processing
 - Open3D
 - CloudCompare (manual annotation and ground truth generation)
 
-### Feature Engineering & Geometry
+#### Feature Engineering & Geometry
 - NumPy
 - Eigenvalue-based geometric descriptors (surface normals, linearity, planarity, sphericity, relative height)
 
-### Machine Learning & Post-processing
+#### Machine Learning & Post-processing
 - scikit-learn (DBSCAN, PCA)
 
-### Data Augmentation & Pipelines
+#### Data Augmentation & Pipelines
 - Torch Geometric Transforms (voxelization, rotation, scaling, jitter)
 
-### Evaluation & Statistics
+#### Evaluation & Statistics
 - IoU, Precision, and Recall metrics
 - Bootstrap resampling (95% confidence intervals)
 
-### Visualization & Media
+#### Visualization & Media
 - Open3D visualization
 
-### Hardware Acceleration
+#### Hardware Acceleration
 - CUDA
