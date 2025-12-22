@@ -11,13 +11,7 @@ _Last updated: December 18, 2025_
 
 ### Authors
 
-**[Angel A. Barrera-Gomez](https://www.linkedin.com/in/angomezu/)**,  
-**[Inhwan Jung](https://www.linkedin.com/in/INHWAN_LINKEDIN/)**,  
-**[Luke Hussung](https://www.linkedin.com/in/luke-hussung-4a2671252/)**  
-
-**[Applied Data Science Program](https://www.etsu.edu/cas/math/masters-in-applied-data-science.php)**  
-**[Department of Mathematics & Statistics](https://www.etsu.edu/cas/math/)**  
-**[East Tennessee State University](https://www.etsu.edu/ehome/)**  
+**[Angel A. Barrera-Gomez](https://www.linkedin.com/in/angomezu/)**, **[Inhwan Jung](https://www.linkedin.com/in/INHWAN_LINKEDIN/)**, **[Luke Hussung](https://www.linkedin.com/in/luke-hussung-4a2671252/)**  
 
 **External Research Collaboration**  
 **[Oak Ridge National Laboratory (ORNL)](https://www.ornl.gov/)**  
@@ -25,8 +19,10 @@ _Last updated: December 18, 2025_
 </div>
 
 <p align="center">
-  <img src="assets/images/prediction.gif" alt="3D LiDAR scan of plant in controlled phenotyping environment" width="750"><br>
-  <em>Figure 1:  Final model prediction after feature engineering and hyperparameter tuning, showing coherent reconstruction of plant organs 65.58% mIoU and 82% stem recall.</em>
+  <img src="assets/images/prediction.gif" width="750" />
+</p>
+<p align="center">
+  <em>Figure 1: Final model prediction after feature engineering and hyperparameter tuning, showing coherent reconstruction of plant organs (65.58% mIoU, 82% stem recall).</em>
 </p>
 
 ---
