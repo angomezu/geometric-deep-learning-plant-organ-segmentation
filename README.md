@@ -9,12 +9,9 @@ _Last updated: December 18, 2025_
 
 <div align="center">
 
-### Authors
+**Authors**: **[Angel A. Barrera-Gomez](https://www.linkedin.com/in/angomezu/)**, **[Inhwan Jung](https://www.linkedin.com/in/INHWAN_LINKEDIN/)**, **[Luke Hussung](https://www.linkedin.com/in/luke-hussung-4a2671252/)**  
 
-**[Angel A. Barrera-Gomez](https://www.linkedin.com/in/angomezu/)**, **[Inhwan Jung](https://www.linkedin.com/in/INHWAN_LINKEDIN/)**, **[Luke Hussung](https://www.linkedin.com/in/luke-hussung-4a2671252/)**  
-
-**External Research Collaboration**  
-**[Oak Ridge National Laboratory (ORNL)](https://www.ornl.gov/)**  
+**External Research Collaboration**: **[Oak Ridge National Laboratory (ORNL)](https://www.ornl.gov/)**  
 
 </div>
 
