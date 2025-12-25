@@ -1,4 +1,4 @@
-# Plant Organ Segmentation from 3D LiDAR Point Clouds via Geometric Deep Learning
+# Geometric Deep Learning-Based Plant Organ Segmentation and Phenotyping Using LiDAR Point Clouds
 
 ![CI](https://github.com/angomezu/geometric-deep-learning-plant-organ-segmentation/actions/workflows/ci.yml/badge.svg)
 ![Python](https://img.shields.io/badge/python-3.8%2B-blue)
